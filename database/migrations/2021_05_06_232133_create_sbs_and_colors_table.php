@@ -14,8 +14,8 @@ class CreateSbsAndColorsTable extends Migration
     public function up()
     {
         Schema::create('sbs_and_colors', function (Blueprint $table) {
-            $table->foreignId('sb_id')->references('id')->on('skateboards')->constrained();
-            $table->foreignId('color_id')->references('id')->on('colors')->constrained();
+            $table->integer('sb_id');
+            $table->integer('color_id');
         });
     }
 

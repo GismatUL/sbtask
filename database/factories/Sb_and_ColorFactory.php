@@ -21,9 +21,6 @@ class Sb_and_ColorFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'sb_id' => $this->faker->numberBetween(1,20),
-            'color_id' => $this->faker->numberBetween(1,3)
-        ];
+        //
     }
 }
