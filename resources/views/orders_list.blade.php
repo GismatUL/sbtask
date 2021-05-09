@@ -19,39 +19,35 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Ad</th>
-            <th>Tip</th>
-            <th>Rəng</th>
-            <th>Qiymət</th>
-            <th>Əlavə Çap Qiyməti</th>
             <th>Əməliyyat</th>
+            <th>Ad</th>
+            <th>Rəng</th>
+            <th>Say</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Ünvan</th>
+            <th>Tarix</th>
+            <th>Çap şəkli</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($skateboards as $skateboard)
+        @foreach($orders as $order)
         <tr>
-            <td>{{$skateboard->id}}</td>
-            <td>{{$skateboard->name}}</td>
-            <td>{{$skateboard->type->name}}</td>
-            <td>{{$skateboard->price}}</td>
-            <td>{{$skateboard->print_price}}</td>
-            <td>
-            @foreach($skateboard->colors as $color)
-             <li style="color: {{$color->hex_code}}">{{$color->name}}</li>
-            @endforeach
-            </td>
-            <td>
-                @if(count($skateboard->colors)>0)
-                <a href="{{url('api/order/'.$skateboard->id)}}">
-                <button type="button" class="btn btn-primary"><i class="fab fa-first-order"></i></button>
-                </a>
-                @endif
-            </td>
+            <td><a href="{{url('api/set_delivery_and_preparation_date/'.$order->id)}}">
+                    <button type="button" class="btn btn-warning"><i class="fa fa-check" aria-hidden="true"></i></button>
+                </a></td>
+            <td>{{$order->product->name}}</td>
+            <td>{{$order->color->name}}</td>
+            <td>{{$order->amount}}</td>
+            <td>{{$order->phone}}</td>
+            <td>{{$order->email}}</td>
+            <td>{{$order->address}}</td>
+            <td>{{date_format(date_create(substr($order->created_at,0,10)),"d-m-Y")}}</td>
+            <td>@if(!empty($order->image))<img src="{{$order->image}}" class="img-rounded" width="304" height="236" >@endif</td>
         </tr>
         @endforeach
         </tbody>
-        <span>{{$skateboards->links('pagination::bootstrap-4')}}</span>
+        <span>{{$orders->links('pagination::bootstrap-4')}}</span>
     </table>
 </div>
 

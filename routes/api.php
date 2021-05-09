@@ -19,3 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/products', [App\Http\Controllers\SkateBoardController::class, 'skateboard']);
+Route::get('/order/{id}', [App\Http\Controllers\SkateBoardController::class, 'get_order_details']);
+Route::post('/order/{id}', [App\Http\Controllers\SkateBoardController::class, 'order']);
+Route::get('/orders_list', [App\Http\Controllers\SkateBoardController::class, 'show_orders']);
+Route::view('/set_delivery_and_preparation_date/{id}', 'set_delivery_and_preparation_date');
+Route::put('/set_delivery_and_preparation_date/{id}',[App\Http\Controllers\SkateBoardController::class,'set_delivery_and_preparation_date']);

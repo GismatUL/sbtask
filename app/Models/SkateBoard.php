@@ -21,4 +21,9 @@ class SkateBoard extends Model
         return $this->belongsToMany(Color::class, 'sbs_and_colors', 'sb_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Orders::class,'product_id','id');
+    }
+
 }

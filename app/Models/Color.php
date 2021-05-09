@@ -15,4 +15,9 @@ class Color extends Model
     {
         return $this->belongsToMany(SkateBoard::class, 'sbs_and_colors', 'color_id');
     }
+
+    public function order()
+    {
+        return $this->hasMany(Orders::class,'color_id','id');
+    }
 }
